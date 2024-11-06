@@ -1,0 +1,19 @@
+version: 1
+compilation_database_dir: .
+output_directory: ./uml
+diagrams:
+  - name: "1"
+    type: "class"
+    glob: "1.cpp"
+  - name: "2"
+    type: "class"
+    glob: "2.cpp"
+  - name: "3"
+    type: "class"
+    glob: "3.cpp"
+  - name: "4"
+    type: "class"
+    glob: "4.cpp"
+  - name: "5"
+    type: "class"
+    glob: "5.cpp"

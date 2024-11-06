@@ -1,0 +1,67 @@
+# 编译生成的二进制文件
+*.exe
+*.out
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+
+# CMake 生成的文件
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+build/
+CTestTestfile.cmake
+Testing/
+
+# VSCode 配置文件
+.vscode/
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# CLion 配置文件
+.idea/
+cmake-build-*/
+
+# MacOS 系统文件
+.DS_Store
+
+# Windows 系统文件
+Thumbs.db
+desktop.ini
+
+# 编译器生成的调试文件
+*.dSYM/
+*.pdb
+*.idb
+*.ipdb
+*.iobj
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.old
+
+# 忽略静态分析工具的文件（如 clangd）
+.clangd/
+.clang-tidy
+.clang-format
+
+# 覆盖率报告文件
+*.gcda
+*.gcno
+*.gcov
+
+# 忽略测试相关的文件
+test-results/
