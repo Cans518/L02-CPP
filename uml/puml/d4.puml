@@ -1,0 +1,69 @@
+@startuml
+class "std::string" as C_0001275076681856179721
+class C_0001275076681856179721 {
+__
+}
+class "std::shared_ptr<T>" as C_0017784820282356576957
+class C_0017784820282356576957 {
+__
+}
+abstract "Process" as C_0009983001938187396663
+abstract C_0009983001938187396663 {
++~Process() = default : void
+..
+{abstract} #complete(const std::string & document_id) = 0 : void
++go(const std::string & document_id) : void
+{abstract} #handle(const std::string & document_id) = 0 : void
+{abstract} #prepare(const std::string & document_id) = 0 : void
+__
+}
+class "IDCardProcess" as C_0014657847387294574349
+class C_0014657847387294574349 {
+#complete(const std::string & document_id) : void
+#handle(const std::string & document_id) : void
+#prepare(const std::string & document_id) : void
+__
+}
+class "PassportProcess" as C_0016225737115785968095
+class C_0016225737115785968095 {
+#complete(const std::string & document_id) : void
+#handle(const std::string & document_id) : void
+#prepare(const std::string & document_id) : void
+__
+}
+class "MarriageCertProcess" as C_0006889588955987234185
+class C_0006889588955987234185 {
+#complete(const std::string & document_id) : void
+#handle(const std::string & document_id) : void
+#prepare(const std::string & document_id) : void
+__
+}
+class "BanzhengGuide<T>" as C_0005218290533427421261
+class C_0005218290533427421261 {
++BanzhengGuide(std::string title, std::string description, std::string document_id, std::shared_ptr<T> process = nullptr) : void
+..
++apply() const : void
+__
+-description_ : std::string
+-document_id_ : std::string
+-process_ : std::shared_ptr<T>
+-title_ : std::string
+}
+C_0009983001938187396663 ..> C_0001275076681856179721
+C_0014657847387294574349 ..> C_0001275076681856179721
+C_0009983001938187396663 <|-- C_0014657847387294574349
+
+C_0016225737115785968095 ..> C_0001275076681856179721
+C_0009983001938187396663 <|-- C_0016225737115785968095
+
+C_0006889588955987234185 ..> C_0001275076681856179721
+C_0009983001938187396663 <|-- C_0006889588955987234185
+
+C_0005218290533427421261 o-- C_0001275076681856179721 : -title_
+C_0005218290533427421261 o-- C_0001275076681856179721 : -description_
+C_0005218290533427421261 o-- C_0001275076681856179721 : -document_id_
+C_0005218290533427421261 --> C_0017784820282356576957 : -process_
+
+'Generated with clang-uml, version 0.5.5
+'LLVM version clang version 18.1.8
+@enduml

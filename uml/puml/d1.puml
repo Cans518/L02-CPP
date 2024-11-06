@@ -1,0 +1,31 @@
+@startuml
+class "std::string" as C_0001275076681856179721
+class C_0001275076681856179721 {
+__
+}
+class "IDCardProcess" as C_0014657847387294574349
+class C_0014657847387294574349 {
+-check_material() : void
+-collect_id_info(const std::string & id) : void
+-confirm_id() : void
+-finish_id_handle() : void
+-handle_id_apply() : void
++start_process(const std::string & id) : void
+__
+}
+class "PassportProcess" as C_0016225737115785968095
+class C_0016225737115785968095 {
+-check_material() : void
+-collect_passport_info(const std::string & passport) : void
+-confirm_passport() : void
+-finish_passport_handle() : void
+-handle_passport_apply() : void
++start_process(const std::string & passport) : void
+__
+}
+C_0014657847387294574349 ..> C_0001275076681856179721
+C_0016225737115785968095 ..> C_0001275076681856179721
+
+'Generated with clang-uml, version 0.5.5
+'LLVM version clang version 18.1.8
+@enduml

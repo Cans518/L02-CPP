@@ -1,0 +1,41 @@
+@startuml
+class "std::string" as C_0001275076681856179721
+class C_0001275076681856179721 {
+__
+}
+abstract "DocumentProcess" as C_0005089681859277019569
+abstract C_0005089681859277019569 {
++~DocumentProcess() : void
+..
+{abstract} #complete(const std::string & id) = 0 : void
++go(const std::string & id) : void
+{abstract} #handle(const std::string & id) = 0 : void
+{abstract} #prepare(const std::string & id) = 0 : void
+__
+#document_id : std::string
+}
+class "IDCardProcess" as C_0014657847387294574349
+class C_0014657847387294574349 {
+#complete(const std::string & id) : void
+#handle(const std::string & id) : void
+#prepare(const std::string & id) : void
+__
+}
+class "PassportProcess" as C_0016225737115785968095
+class C_0016225737115785968095 {
+#complete(const std::string & id) : void
+#handle(const std::string & id) : void
+#prepare(const std::string & id) : void
+__
+}
+C_0005089681859277019569 o-- C_0001275076681856179721 : #document_id
+C_0014657847387294574349 ..> C_0001275076681856179721
+C_0005089681859277019569 <|-- C_0014657847387294574349
+
+C_0016225737115785968095 ..> C_0001275076681856179721
+C_0005089681859277019569 <|-- C_0016225737115785968095
+
+
+'Generated with clang-uml, version 0.5.5
+'LLVM version clang version 18.1.8
+@enduml

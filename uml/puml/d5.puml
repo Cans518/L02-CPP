@@ -1,0 +1,151 @@
+@startuml
+class "std::string" as C_0001275076681856179721
+class C_0001275076681856179721 {
+__
+}
+class "std::shared_ptr<T>" as C_0017784820282356576957
+class C_0017784820282356576957 {
+__
+}
+class "std::shared_ptr<Process>" as C_0009387198095052381269
+class C_0009387198095052381269 {
+__
+}
+class "std::vector<std::string>" as C_0001347152004389415025
+class C_0001347152004389415025 {
+__
+}
+class "std::shared_ptr<Tourism>" as C_0014359519481981239301
+class C_0014359519481981239301 {
+__
+}
+abstract "Process" as C_0009983001938187396663
+abstract C_0009983001938187396663 {
++~Process() = default : void
+..
+{abstract} #complete(const std::string & document_id) = 0 : void
++go(const std::string & document_id) : void
+{abstract} #handle(const std::string & document_id) = 0 : void
+{abstract} #prepare(const std::string & document_id) = 0 : void
+__
+}
+class "IDCardProcess" as C_0014657847387294574349
+class C_0014657847387294574349 {
+#complete(const std::string & document_id) : void
+#handle(const std::string & document_id) : void
+#prepare(const std::string & document_id) : void
+__
+}
+class "PassportProcess" as C_0016225737115785968095
+class C_0016225737115785968095 {
+#complete(const std::string & document_id) : void
+#handle(const std::string & document_id) : void
+#prepare(const std::string & document_id) : void
+__
+}
+class "Guide<T>" as C_0013509487173209776061
+class C_0013509487173209776061 {
++Guide(std::string title, std::string description, std::string id, std::shared_ptr<T> process = nullptr) : void
+..
++apply() : void
++set_process(std::shared_ptr<T> process) : void
+__
+#description_ : std::string
+#id_ : std::string
+#process_ : std::shared_ptr<T>
+#title_ : std::string
+}
+class "Guide<Process>" as C_0010122189676891898598
+class C_0010122189676891898598 {
+__
+}
+class "BanzhengGuide" as C_0007306514153846245884
+class C_0007306514153846245884 {
++Guide(std::string, std::string, std::string, std::shared_ptr<Process>) : void
+__
+}
+abstract "Tourism" as C_0002659494205000605213
+abstract C_0002659494205000605213 {
++~Tourism() = default : void
+..
+{abstract} #complete_tour(const std::string & tour_id) = 0 : void
+{abstract} #conduct_tour(const std::string & tour_id) = 0 : void
++go(const std::string & tour_id) : void
+{abstract} #prepare_tour(const std::string & tour_id) = 0 : void
+__
+}
+class "BeijingTourism" as C_0003159930702380796578
+class C_0003159930702380796578 {
++BeijingTourism() : void
+..
+#complete_tour(const std::string & tour_id) : void
+#conduct_tour(const std::string & tour_id) : void
+-join(const std::vector<std::string> & vec) const : std::string
+#prepare_tour(const std::string & tour_id) : void
+__
+-attractions_ : std::vector<std::string>
+-duration_ : std::string
+-transportation_ : std::vector<std::string>
+}
+class "Guide<Tourism>" as C_0017252465520474459211
+class C_0017252465520474459211 {
+__
+}
+class "TourismGuide" as C_0010077979135524728024
+class C_0010077979135524728024 {
++TourismGuide(std::string title, std::string description, std::string tour_id, std::shared_ptr<Tourism> tourism = nullptr) : void
+..
++apply() : void
+-join(const std::vector<std::string> & vec) const : std::string
++show_tour_info() const : void
+__
+-max_participants_ : int
+-meeting_point_ : std::string
+-meeting_time_ : std::string
+-min_participants_ : int
+-price_ : std::string
+-requirements_ : std::vector<std::string>
+}
+C_0009387198095052381269 ..> C_0009983001938187396663
+C_0009387198095052381269 ..|> C_0017784820282356576957
+C_0001347152004389415025 ..> C_0001275076681856179721
+C_0014359519481981239301 ..> C_0002659494205000605213
+C_0014359519481981239301 ..|> C_0017784820282356576957
+C_0009983001938187396663 ..> C_0001275076681856179721
+C_0014657847387294574349 ..> C_0001275076681856179721
+C_0009983001938187396663 <|-- C_0014657847387294574349
+
+C_0016225737115785968095 ..> C_0001275076681856179721
+C_0009983001938187396663 <|-- C_0016225737115785968095
+
+C_0013509487173209776061 o-- C_0001275076681856179721 : #title_
+C_0013509487173209776061 o-- C_0001275076681856179721 : #description_
+C_0013509487173209776061 o-- C_0001275076681856179721 : #id_
+C_0013509487173209776061 --> C_0017784820282356576957 : #process_
+C_0010122189676891898598 ..> C_0009983001938187396663
+C_0010122189676891898598 ..|> C_0013509487173209776061
+C_0007306514153846245884 ..> C_0001275076681856179721
+C_0007306514153846245884 ..> C_0009387198095052381269
+C_0007306514153846245884 ..> C_0009983001938187396663
+C_0010122189676891898598 <|-- C_0007306514153846245884
+
+C_0002659494205000605213 ..> C_0001275076681856179721
+C_0003159930702380796578 o-- C_0001347152004389415025 : -attractions_
+C_0003159930702380796578 o-- C_0001347152004389415025 : -transportation_
+C_0003159930702380796578 o-- C_0001275076681856179721 : -duration_
+C_0002659494205000605213 <|-- C_0003159930702380796578
+
+C_0017252465520474459211 ..> C_0002659494205000605213
+C_0017252465520474459211 ..|> C_0013509487173209776061
+C_0010077979135524728024 ..> C_0014359519481981239301
+C_0010077979135524728024 ..> C_0002659494205000605213
+C_0010077979135524728024 o-- C_0001275076681856179721 : -price_
+C_0010077979135524728024 o-- C_0001275076681856179721 : -meeting_point_
+C_0010077979135524728024 o-- C_0001275076681856179721 : -meeting_time_
+C_0010077979135524728024 o-- C_0001347152004389415025 : -requirements_
+C_0017252465520474459211 <|-- C_0010077979135524728024
+
+
+'Generated with clang-uml, version 0.5.5
+'LLVM version clang version 18.1.8
+@enduml
